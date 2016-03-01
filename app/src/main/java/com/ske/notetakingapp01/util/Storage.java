@@ -1,23 +1,23 @@
 package com.ske.notetakingapp01.util;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ske.notetakingapp01.models.Note;
-
 import org.json.JSONException;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A storage for saving and loading notes
+ */
 public class Storage {
 
     private static Storage instance;
+    private String DB = "NOTES";
+    private SharedPreferences.Editor editor;
 
     public static Storage getInstance() {
         if(instance == null) {
@@ -28,26 +28,18 @@ public class Storage {
 
     private Storage() {}
 
-    private String DB = "NOTES";
-
     public void saveNote(Context context, Note note) throws JSONException {
-        SharedPreferences.Editor editor =  context.getSharedPreferences(DB, Context.MODE_PRIVATE).edit();
+        editor =  context.getSharedPreferences(DB, Context.MODE_PRIVATE).edit();
         List<Note> notes = loadNotes(context);
         notes.add(note);
-        String notesJson = new Gson().toJson(notes);
-        Log.d("NoteApp", "Save json string: " + notesJson);
-        editor.putString(DB, notesJson);
-        editor.commit();
+        saveNotesJson(new Gson().toJson(notes));
     }
 
     public void deleteNote(Context context, Note note) throws JSONException {
-        SharedPreferences.Editor editor =  context.getSharedPreferences(DB, Context.MODE_PRIVATE).edit();
+        editor =  context.getSharedPreferences(DB, Context.MODE_PRIVATE).edit();
         List<Note> notes = loadNotes(context);
         notes.remove(note);
-        String notesJson = new Gson().toJson(notes);
-        Log.d("NoteApp", "Save json string: " + notesJson);
-        editor.putString(DB, notesJson);
-        editor.commit();
+        saveNotesJson(new Gson().toJson(notes));
     }
 
     public List<Note> loadNotes(Context context) throws JSONException {
@@ -60,9 +52,11 @@ public class Storage {
     }
 
     public void clear(Context context) {
-        SharedPreferences.Editor editor =  context.getSharedPreferences(DB, Context.MODE_PRIVATE).edit();
-        List<Note> notes = new ArrayList<Note>();
-        String notesJson = new Gson().toJson(notes);
+        editor =  context.getSharedPreferences(DB, Context.MODE_PRIVATE).edit();
+        saveNotesJson(new Gson().toJson(new ArrayList<Note>()));
+    }
+
+    private void saveNotesJson(String notesJson) {
         editor.putString(DB, notesJson);
         editor.commit();
     }

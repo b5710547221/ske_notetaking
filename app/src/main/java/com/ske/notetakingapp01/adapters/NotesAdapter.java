@@ -40,17 +40,25 @@ public class NotesAdapter extends ArrayAdapter<Note> {
         subject.setText(getItem(position).getSubject());
         body.setText(getItem(position).getBody());
         createdTime.setText(getItem(position).getReadableCreatedTime());
+        tags.setText(joinTags(getItem(position).getTags()));
 
+        try {
+            v.setBackgroundColor(Color.parseColor(getItem(position).getColorHex()));
+            // Any error in color setting. Just fallback to default color
+        } catch (Exception e) {
+            v.setBackgroundColor(Color.parseColor(Note.DEFAULT_COLOR));
+        }
+
+        return v;
+    }
+
+    private String joinTags(List<String> tags) {
         String delim = "";
         String tagString = "";
-        for(String s : getItem(position).getTags()) {
+        for(String s : tags) {
             tagString += (delim + " " + s);
             delim = ",";
         }
-        tags.setText(tagString);
-
-        v.setBackgroundColor(Color.parseColor(getItem(position).getColorHex()));
-
-        return v;
+        return tagString;
     }
 }

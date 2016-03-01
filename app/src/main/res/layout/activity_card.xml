@@ -10,14 +10,14 @@
         android:id="@+id/subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Subject"
+        android:text="@string/subject"
         android:gravity="center"/>
 
     <TextView
         android:id="@+id/body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Body"
+        android:text="@string/body"
         android:gravity="center"
         android:layout_below="@+id/subject"
         />
@@ -26,14 +26,14 @@
         android:id="@+id/share_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Share this note"
+        android:text="@string/share"
         android:layout_above="@+id/delete_button"/>
 
     <Button
         android:id="@+id/delete_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Delete this note"
+        android:text="@string/delete"
         android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

@@ -2,12 +2,16 @@ package com.ske.notetakingapp01.models;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * A simple note
+ */
 public class Note implements Serializable {
+
+    public static final String DEFAULT_COLOR = "#ffffff";
 
     private long createdTimeStamp;
     private String subject;
@@ -15,20 +19,12 @@ public class Note implements Serializable {
     private List<String> tags;
     private String colorHex;
 
-    public Note(String subject, String body) {
-        this.subject = subject;
-        this.body = body;
-        this.tags = new ArrayList<String>();
-        this.createdTimeStamp = System.currentTimeMillis();
-        this.colorHex = "#ffffff";
-    }
-
     public Note(String subject, String body, List<String> tags) {
         this.subject = subject;
         this.body = body;
         this.tags = tags;
         this.createdTimeStamp = System.currentTimeMillis();
-        this.colorHex = "#ffffff";
+        this.colorHex = DEFAULT_COLOR;
     }
 
     public String getSubject() {
@@ -47,29 +43,26 @@ public class Note implements Serializable {
         return createdTimeStamp;
     }
 
-    public void setColorHex(String colorHex) {
-        this.colorHex = colorHex;
-    }
-
     public String getColorHex() {
         return colorHex;
     }
 
     public String getReadableCreatedTime() {
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy - HH:mm");
         Date resultdate = new Date(getCreatedTimeStamp());
         return sdf.format(resultdate);
+    }
+
+    public void setColorHex(String colorHex) {
+        this.colorHex = colorHex;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Note)) return false;
-
         Note note = (Note) o;
-
         return createdTimeStamp == note.createdTimeStamp;
-
     }
 
     @Override

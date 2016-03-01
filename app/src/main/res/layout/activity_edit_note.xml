@@ -12,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Subject"/>
+        android:hint="@string/subject"/>
 
     <EditText
         android:id="@+id/tags"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="Tag1, Tag2, Tag3"
+        android:hint="@string/tags"
         android:layout_below="@id/subject"/>
 
     <EditText
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:hint="#ffffff"
+        android:hint="@string/default_color"
         android:layout_below="@id/tags"/>
 
     <EditText
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:hint="Body"
+        android:hint="@string/body"
         android:layout_below="@id/tags"
         />
 
@@ -43,7 +43,7 @@
         android:id="@+id/save_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save and Back"
+        android:text="@string/save_and_back"
         android:layout_alignParentBottom="true"
         />
 

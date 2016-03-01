@@ -10,20 +10,20 @@
         android:id="@+id/new_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New "/>
+        android:text="@string/new_note"/>
 
     <Button
         android:id="@+id/sort_az"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sort A-Z"
+        android:text="@string/sort_az"
         android:layout_toRightOf="@+id/new_button"/>
 
     <Button
         android:id="@+id/sort_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sort Time"
+        android:text="@string/sort_time"
         android:layout_toRightOf="@+id/sort_az"/>
 
     <GridView

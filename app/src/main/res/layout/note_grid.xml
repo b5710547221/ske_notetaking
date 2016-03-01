@@ -11,7 +11,6 @@
         android:id="@+id/subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Subject"
         android:textStyle="bold"
         android:textSize="16sp"
         android:gravity="center"/>
@@ -20,7 +19,6 @@
         android:id="@+id/body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Body"
         android:textSize="12sp"
         android:gravity="center"/>
 
@@ -28,7 +26,6 @@
         android:id="@+id/created_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Created Time"
         android:textSize="12sp"
         android:gravity="center"/>
 
@@ -36,7 +33,6 @@
         android:id="@+id/tags"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tags"
         android:textSize="12sp"
         android:gravity="center"/>
 
